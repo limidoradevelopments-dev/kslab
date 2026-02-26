@@ -94,17 +94,16 @@ export default function Products() {
               key={product.id}
               className={cn(
                 "group relative bg-white rounded-2xl p-7 md:p-8 shadow-sm border border-gray-100",
-                "hover:shadow-xl hover:border-primary/20 hover:-translate-y-1",
                 "transition-all duration-500 ease-out"
               )}
             >
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 transition-all duration-300">
                 {product.icon}
               </div>
 
               {/* Title */}
-              <h3 className="font-heading text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-dark transition-colors duration-300">
+              <h3 className="font-heading text-lg md:text-xl font-semibold text-gray-900 mb-2 transition-colors duration-300">
                 {product.title}
               </h3>
 
@@ -112,9 +111,6 @@ export default function Products() {
               <p className="text-gray-500 text-sm leading-relaxed font-body">
                 {product.description}
               </p>
-
-              {/* Hover accent bar */}
-              <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-accent rounded-b-2xl group-hover:w-full transition-all duration-500" />
             </div>
           ))}
         </div>

@@ -46,7 +46,7 @@ function StatCard({
 
   return (
     <div
-      className="stat-card flex flex-col items-center justify-center text-center px-6 py-8 rounded-2xl bg-primary-dark/5 border border-primary/10 transition-all duration-700"
+      className="stat-card flex flex-col items-center justify-center text-center px-6 py-8 rounded-2xl bg-gray-50 border border-gray-200 transition-all duration-700"
       style={{
         opacity: active ? 1 : 0,
         transform: active ? "translateY(0)" : "translateY(20px)",
@@ -135,7 +135,7 @@ export default function About() {
         {/* ── Stats strip ── */}
         <div
           ref={statsRef}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 border-t border-gray-100 pt-12"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 border-t border-gray-100 pt-16 mt-4"
         >
           {STATS.map((stat, i) => (
             <StatCard

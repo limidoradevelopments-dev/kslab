@@ -2,7 +2,12 @@
 
 import { cn } from "@/lib/utils";
 
-const CONTACT_INFO = [
+type ContactEntry =
+  | { icon: React.ReactNode; title: string; type: "text"; detail: string }
+  | { icon: React.ReactNode; title: string; type: "phones"; numbers: { label: string; href: string }[] }
+  | { icon: React.ReactNode; title: string; type: "email"; address: string; href: string };
+
+const CONTACT_INFO: ContactEntry[] = [
   {
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -11,7 +16,8 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Visit Us",
-    detail: "53/A/2 first cross street, VC road,kirimetiyana, lunuwila. ",
+    type: "text",
+    detail: "53/A/2 first cross street, VC road, Kirimetiyana, Lunuwila.",
   },
   {
     icon: (
@@ -20,7 +26,12 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Call Us",
-    detail: "+94 772 892 315\n+94 742 985 481\n+94 766 876 919",
+    type: "phones",
+    numbers: [
+      { label: "+94 772 892 315", href: "tel:+94772892315" },
+      { label: "+94 742 985 481", href: "tel:+94742985481" },
+      { label: "+94 766 876 919", href: "tel:+94766876919" },
+    ],
   },
   {
     icon: (
@@ -29,7 +40,9 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Email Us",
-    detail: "kslaboratory073@gmail.com",
+    type: "email",
+    address: "kslaboratory073@gmail.com",
+    href: "mailto:kslaboratory073@gmail.com",
   },
   {
     icon: (
@@ -38,19 +51,20 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Working Hours",
+    type: "text",
     detail: "Mon — Sat: 7:00 AM — 9:00 PM",
   },
 ];
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative section-padding bg-primary-dark overflow-hidden">
+    <section id="contact" className="relative section-padding bg-white overflow-hidden">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, black 1px, transparent 0)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -58,11 +72,11 @@ export default function Contact() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-16">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-white font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-tight">
+          <h2 className="text-primary-dark font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-tight">
             Get In Touch
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto mb-5 rounded-full" />
-          <p className="text-white/70 text-base md:text-lg font-body leading-relaxed">
+          <p className="text-gray-600 text-base md:text-lg font-body leading-relaxed">
             Have a question or need a quote? Reach out to us and we&apos;ll get
             back to you within 24 hours.
           </p>
@@ -76,7 +90,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-white/80 text-sm font-medium mb-2"
+                    className="block text-gray-700 text-sm font-medium mb-2"
                   >
                     Full Name
                   </label>
@@ -84,13 +98,13 @@ export default function Contact() {
                     type="text"
                     id="name"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-white/80 text-sm font-medium mb-2"
+                    className="block text-gray-700 text-sm font-medium mb-2"
                   >
                     Email
                   </label>
@@ -98,14 +112,14 @@ export default function Contact() {
                     type="email"
                     id="email"
                     placeholder="your@email.com"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
                   />
                 </div>
               </div>
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-white/80 text-sm font-medium mb-2"
+                  className="block text-gray-700 text-sm font-medium mb-2"
                 >
                   Subject
                 </label>
@@ -113,13 +127,13 @@ export default function Contact() {
                   type="text"
                   id="subject"
                   placeholder="How can we help?"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
                 />
               </div>
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-white/80 text-sm font-medium mb-2"
+                  className="block text-gray-700 text-sm font-medium mb-2"
                 >
                   Message
                 </label>
@@ -127,12 +141,12 @@ export default function Contact() {
                   id="message"
                   rows={5}
                   placeholder="Tell us about your requirements..."
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full sm:w-auto px-8 py-3.5 bg-accent hover:bg-accent-light text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 active:scale-[0.98]"
+                className="w-full sm:w-auto px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 active:scale-[0.98]"
               >
                 Send Message
               </button>
@@ -144,16 +158,39 @@ export default function Contact() {
             <div className="space-y-6">
               {CONTACT_INFO.map((info, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-white/10 text-accent flex items-center justify-center mt-0.5">
+                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center mt-0.5">
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold text-sm mb-1">
+                    <h4 className="text-gray-900 font-semibold text-sm mb-1">
                       {info.title}
                     </h4>
-                    <p className="text-white/60 text-sm leading-relaxed whitespace-pre-line">
-                      {info.detail}
-                    </p>
+                    {info.type === "phones" && (
+                      <div className="flex flex-col gap-0.5">
+                        {info.numbers.map((n) => (
+                          <a
+                            key={n.href}
+                            href={n.href}
+                            className="text-gray-600 text-sm leading-relaxed hover:text-primary transition-colors duration-200"
+                          >
+                            {n.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                    {info.type === "email" && (
+                      <a
+                        href={info.href}
+                        className="text-gray-600 text-sm leading-relaxed hover:text-primary transition-colors duration-200 break-all"
+                      >
+                        {info.address}
+                      </a>
+                    )}
+                    {info.type === "text" && (
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {info.detail}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}

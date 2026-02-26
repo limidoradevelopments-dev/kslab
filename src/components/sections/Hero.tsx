@@ -10,18 +10,42 @@ const SLIDES = [
     heading: "KS Laboratory\nChemicals And\nEverything You Need",
     subtitle:
       "Quality laboratory equipment for schools — everything you need for safe and effective science learning",
+    image: "/images/hero-bg.png",
   },
   {
     id: 2,
     heading: "Premium Lab\nChemicals For\nEvery Experiment",
     subtitle:
       "From basic reagents to advanced compounds — trusted by schools and institutions nationwide",
+    image: "/images/hero-bg-2.png",
   },
   {
     id: 3,
     heading: "Safety First\nQuality Always\nResults Guaranteed",
     subtitle:
       "Industry-certified laboratory supplies ensuring the highest standards for educational environments",
+    image: "/images/hero-bg-3.png",
+  },
+  {
+    id: 4,
+    heading: "Precision Tools\nFor The Next\nGeneration",
+    subtitle:
+      "Advanced analytical instruments designed for accuracy, durability, and ease of use in science education.",
+    image: "/images/hero-bg-4.png",
+  },
+  {
+    id: 5,
+    heading: "Curiosity Starts\nWith The Right\nEquipment",
+    subtitle:
+      "Spark interest in science with our comprehensive range of educational charts, models, and kits.",
+    image: "/images/hero-bg-5.png",
+  },
+  {
+    id: 6,
+    heading: "Empowering Sri\nLanka's Science\nEducation",
+    subtitle:
+      "Supporting schools across the island with reliable laboratory setup solutions and training.",
+    image: "/images/hero-bg-6.png",
   },
 ];
 
@@ -48,17 +72,27 @@ export default function Hero() {
       id="hero"
       className="relative w-full h-screen min-h-[600px] overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Images with smooth cross-fade */}
       <div className="absolute inset-0">
-        <Image
-          src="/images/hero-bg.png"
-          alt="Laboratory environment"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-          quality={90}
-        />
+        {SLIDES.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={cn(
+              "absolute inset-0 transition-opacity duration-2000 ease-in-out",
+              index === activeSlide ? "opacity-100" : "opacity-0"
+            )}
+          >
+            <Image
+              src={slide.image}
+              alt="Laboratory environment"
+              fill
+              priority={index <= 1}
+              className="object-cover object-center scale-105"
+              sizes="100vw"
+              quality={90}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Blue Gradient Overlay */}
@@ -76,7 +110,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 h-full w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 flex flex-col justify-end items-end pb-20 md:pb-24 lg:pb-32">
+      <div className="relative z-10 h-full w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 flex flex-col justify-end items-end pb-12 sm:pb-16 md:pb-20 lg:pb-24">
         <div className="max-w-2xl text-right">
           {/* Heading */}
           <h1
@@ -145,7 +179,7 @@ export default function Hero() {
         {/* Slide Indicators */}
         <div
           className={cn(
-            "absolute bottom-10 left-5 sm:left-8 lg:left-16 flex items-center gap-3 transition-all duration-1000 delay-600",
+            "absolute bottom-8 left-5 sm:left-8 lg:left-16 flex items-center gap-3 transition-all duration-1000 delay-600",
             isVisible ? "opacity-100" : "opacity-0"
           )}
         >
@@ -167,14 +201,14 @@ export default function Hero() {
         {/* Scroll Indicator */}
         <div
           className={cn(
-            "absolute bottom-10 right-5 sm:right-8 lg:right-16 hidden md:flex flex-col items-center gap-2 transition-all duration-1000 delay-700",
+            "absolute bottom-8 right-5 sm:right-8 lg:right-16 hidden md:flex flex-col items-center gap-2 transition-all duration-1000 delay-700",
             isVisible ? "opacity-100" : "opacity-0"
           )}
         >
           <span className="text-white/50 text-xs tracking-widest uppercase rotate-90 origin-center translate-y-6">
             Scroll
           </span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent mt-8 animate-pulse" />
+          <div className="w-[1px] h-8 bg-gradient-to-b from-white/50 to-transparent mt-8 animate-pulse" />
         </div>
       </div>
     </section>

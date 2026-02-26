@@ -130,7 +130,7 @@ export default function Testimonials() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] rounded-full bg-primary/10 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 mb-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 mb-16 lg:mb-20">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto">
           <p className="text-accent text-xs font-body tracking-[0.25em] uppercase mb-4">
