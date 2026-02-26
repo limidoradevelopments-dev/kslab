@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 /* ─── Stat data ─────────────────────────────────────────────── */
 const STATS = [
-  { value: 10, suffix: "+", label: "Years Experience" },
-  { value: 500, suffix: "+", label: "Schools Served" },
+  { value: 20, suffix: "+", label: "Years Experience" },
+  { value: 1000, suffix: "+", label: "Schools Served" },
   { value: 5000, suffix: "+", label: "Products Supplied" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
 ];

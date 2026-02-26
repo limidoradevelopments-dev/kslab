@@ -26,27 +26,6 @@ const SLIDES = [
       "Industry-certified laboratory supplies ensuring the highest standards for educational environments",
     image: "/images/hero-bg-3.png",
   },
-  {
-    id: 4,
-    heading: "Precision Tools\nFor The Next\nGeneration",
-    subtitle:
-      "Advanced analytical instruments designed for accuracy, durability, and ease of use in science education.",
-    image: "/images/hero-bg-4.png",
-  },
-  {
-    id: 5,
-    heading: "Curiosity Starts\nWith The Right\nEquipment",
-    subtitle:
-      "Spark interest in science with our comprehensive range of educational charts, models, and kits.",
-    image: "/images/hero-bg-5.png",
-  },
-  {
-    id: 6,
-    heading: "Empowering Sri\nLanka's Science\nEducation",
-    subtitle:
-      "Supporting schools across the island with reliable laboratory setup solutions and training.",
-    image: "/images/hero-bg-6.png",
-  },
 ];
 
 export default function Hero() {

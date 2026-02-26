@@ -59,6 +59,12 @@ const PRODUCTS = [
     description: "High-quality borosilicate beakers, flasks, and test tubes for precise experimental work.",
     image: "/images/bul.png", // Reusing relevant image with lab view
   },
+  {
+    id: 9,
+    title: "ROBOTIC ITEMS",
+    description: "Educational robotics kits, sensors, and programmable components for STEM learning.",
+    image: "/images/ard.png", // Reusing electronics/robotic image
+  },
 ];
 
 export default function ProductShowcase() {
