@@ -32,77 +32,79 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
-        isScrolled
-          ? "bg-primary-dark/90 backdrop-blur-md shadow-lg shadow-black/10 py-3"
-          : "bg-transparent py-5"
-      )}
-    >
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-8 lg:px-16">
-        <Link href="/" className="flex items-center group">
-          <div className="relative">
-            {/* KS Logo Image */}
-            <div className="relative w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
-              <Image
-                src="/images/logo.png"
-                alt="KS Laboratory Logo"
-                width={96}
-                height={96}
-                className="object-contain"
-                priority
-              />
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
+          isScrolled
+            ? "bg-primary-dark/90 backdrop-blur-md shadow-lg shadow-black/10 py-3"
+            : "bg-transparent py-5"
+        )}
+      >
+        <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-8 lg:px-16">
+          <Link href="/" className="flex items-center group">
+            <div className="relative">
+              {/* KS Logo Image */}
+              <div className="relative w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="KS Laboratory Logo"
+                  width={96}
+                  height={96}
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden lg:flex items-center gap-8 xl:gap-10">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className="text-white/90 hover:text-white text-sm font-medium tracking-widest uppercase transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          {/* Desktop Navigation */}
+          <ul className="hidden lg:flex items-center gap-8 xl:gap-10">
+            {NAV_LINKS.map((link) => (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className="text-white/90 hover:text-white text-sm font-medium tracking-widest uppercase transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 z-50"
-          aria-label="Toggle menu"
-          aria-expanded={isMobileMenuOpen}
-        >
-          <span
-            className={cn(
-              "w-6 h-0.5 bg-white transition-all duration-300 origin-center",
-              isMobileMenuOpen && "rotate-45 translate-y-2"
-            )}
-          />
-          <span
-            className={cn(
-              "w-6 h-0.5 bg-white transition-all duration-300",
-              isMobileMenuOpen && "opacity-0 scale-x-0"
-            )}
-          />
-          <span
-            className={cn(
-              "w-6 h-0.5 bg-white transition-all duration-300 origin-center",
-              isMobileMenuOpen && "-rotate-45 -translate-y-2"
-            )}
-          />
-        </button>
-      </nav>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 z-50"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <span
+              className={cn(
+                "w-6 h-0.5 bg-white transition-all duration-300 origin-center",
+                isMobileMenuOpen && "rotate-45 translate-y-2"
+              )}
+            />
+            <span
+              className={cn(
+                "w-6 h-0.5 bg-white transition-all duration-300",
+                isMobileMenuOpen && "opacity-0 scale-x-0"
+              )}
+            />
+            <span
+              className={cn(
+                "w-6 h-0.5 bg-white transition-all duration-300 origin-center",
+                isMobileMenuOpen && "-rotate-45 -translate-y-2"
+              )}
+            />
+          </button>
+        </nav>
+      </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Moved outside header to fix z-index/stacking with blurred background */}
       <div
         className={cn(
-          "fixed inset-0 bg-primary-dark/98 backdrop-blur-xl transition-all duration-500 lg:hidden flex items-center justify-center",
+          "fixed inset-0 bg-primary-dark/98 backdrop-blur-xl transition-all duration-500 lg:hidden flex items-center justify-center z-[100]",
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -135,6 +137,6 @@ export default function Navbar() {
           ))}
         </ul>
       </div>
-    </header>
+    </>
   );
 }

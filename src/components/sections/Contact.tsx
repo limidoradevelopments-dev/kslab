@@ -11,7 +11,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Visit Us",
-    detail: "KS Laboratory, Main Road, Your City, State - 000000",
+    detail: "53/A/2 first cross street, VC road,kirimetiyana, lunuwila. ",
   },
   {
     icon: (
@@ -20,7 +20,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Call Us",
-    detail: "+91 98765 43210",
+    detail: "+94 772 892 315\n+94 742 985 481\n+94 766 876 919",
   },
   {
     icon: (
@@ -29,7 +29,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Email Us",
-    detail: "info@kslaboratory.com",
+    detail: "kslaboratory073@gmail.com",
   },
   {
     icon: (
@@ -38,7 +38,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Working Hours",
-    detail: "Mon — Sat: 9:00 AM — 7:00 PM",
+    detail: "Mon — Sat: 7:00 AM — 9:00 PM",
   },
 ];
 
@@ -151,7 +151,7 @@ export default function Contact() {
                     <h4 className="text-white font-semibold text-sm mb-1">
                       {info.title}
                     </h4>
-                    <p className="text-white/60 text-sm leading-relaxed">
+                    <p className="text-white/60 text-sm leading-relaxed whitespace-pre-line">
                       {info.detail}
                     </p>
                   </div>

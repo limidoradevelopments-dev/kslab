@@ -81,4 +81,22 @@ body {
       padding-bottom: 8rem;
     }
   }
+
+  .testimonials-ticker {
+    animation: ticker 40s linear infinite;
+    width: max-content;
+  }
+
+  .testimonials-ticker:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
